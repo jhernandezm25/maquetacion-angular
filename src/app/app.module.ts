@@ -11,7 +11,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { MenuLoginComponent } from './components/menu-login/menu-login.component';
 //forms
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { GalleryComponent } from './components/gallery/gallery.component'
+import { GalleryComponent } from './components/gallery/gallery.component';
+import { ContacUsComponent } from './components/contac-us/contac-us.component'
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { GalleryComponent } from './components/gallery/gallery.component'
     HistoryComponent,
     LoginComponent,
     MenuLoginComponent,
-    GalleryComponent
+    GalleryComponent,
+    ContacUsComponent
   ],
   imports: [
     BrowserModule,

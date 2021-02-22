@@ -1,0 +1,68 @@
+<section class="container pt-2 d-flex justify-content-start">
+    <h2>Contact us</h2>
+</section>
+<section class="container pt-2">
+  <article class="card p-4">
+    <form ngNativeValidate (ngSubmit)="registrar()">
+      <section class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input
+          name="email"
+          [(ngModel)]="userInfo.email"
+          [ngModelOptions]="{ standalone: true }"
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+        />
+        <article
+          *ngIf="userInfoValidator.email"
+          id="emailHelp"
+          class="form-text text-danger"
+        >
+          Email no valido
+        </article>
+      </section>
+      <section class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Username</label>
+        <input
+          name="userName"
+          [(ngModel)]="userInfo.userName"
+          [ngModelOptions]="{ standalone: true }"
+          type="text"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+        />
+        <article
+          *ngIf="userInfoValidator.userName"
+          id="emailHelp"
+          class="form-text text-danger"
+        >
+          UserName no valido
+        </article>
+      </section>
+      <section class="mb-3">
+        <label for="phoneNumberInput" class="form-label">Phone number</label>
+        <input
+          name="phoneNumber"
+          [(ngModel)]="userInfo.phoneNumber"
+          [ngModelOptions]="{ standalone: true }"
+          type="text"
+          class="form-control"
+          id="phoneNumberInput"
+          aria-describedby="phoneNumberInputHelp"
+        />
+        <article
+          *ngIf="userInfoValidator.phoneNumber"
+          id="emailHelp"
+          class="form-text text-danger"
+        >
+          phoneNumber no valido
+        </article>
+      </section>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </article>
+</section>
