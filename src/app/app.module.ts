@@ -12,7 +12,8 @@ import { MenuLoginComponent } from './components/menu-login/menu-login.component
 //forms
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GalleryComponent } from './components/gallery/gallery.component';
-import { ContacUsComponent } from './components/contac-us/contac-us.component'
+import { ContacUsComponent } from './components/contac-us/contac-us.component';
+import { FooterComponent } from './components/footer/footer.component'
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ContacUsComponent } from './components/contac-us/contac-us.component'
     LoginComponent,
     MenuLoginComponent,
     GalleryComponent,
-    ContacUsComponent
+    ContacUsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
