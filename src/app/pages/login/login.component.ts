@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -40,10 +40,13 @@ export class LoginComponent implements OnInit {
       this.userInfoValidator.password = false;
     }
     if (this.userInfo.password !== '' && this.userInfo.email !== ''){
-      localStorage.setItem('userInfo', JSON.stringify(this.userInfo));
-      this.router.navigate(['/']);
+      if (this.userInfo.email.trim() === 'jorge.hernandez@dreamcodesoft.com' && this.userInfo.password.trim() === 'Ab123456'){
+        localStorage.setItem('userInfo', JSON.stringify(this.userInfo));
+        this.router.navigate(['/']);
+      }else{
+        alert('El usuario no se encuentra registrado en el sistema');
+      }
     }
-
     this.variableTemporal = localStorage.getItem('userInfo');
     console.log('temp', this.variableTemporal);
     console.log(' esto es la informacion del usuario ', this.userInfo);
