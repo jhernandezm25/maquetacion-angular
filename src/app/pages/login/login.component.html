@@ -22,25 +22,6 @@
         </article>
       </section>
       <section class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Username</label>
-        <input
-          name="userName"
-          [(ngModel)]="userInfo.userName"
-          [ngModelOptions]="{ standalone: true }"
-          type="text"
-          class="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-        />
-        <article
-          *ngIf="userInfoValidator.password"
-          id="emailHelp"
-          class="form-text text-danger"
-        >
-          UserName no valido
-        </article>
-      </section>
-      <section class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Password</label>
         <input
           name="password"
@@ -58,16 +39,9 @@
           Por favor ingrese su contraseña
         </article>
       </section>
-      <section class="mb-3 form-check">
-        <input
-          name="boton"
-          type="checkbox"
-          class="form-check-input"
-          id="exampleCheck1"
-        />
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      <section class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary">Submit</button>
       </section>
-      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </article>
 </section>
