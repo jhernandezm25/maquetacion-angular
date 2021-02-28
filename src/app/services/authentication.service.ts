@@ -14,7 +14,6 @@ export class AuthenticationService {
     private afAuth: AngularFireAuth,
     private router: Router,
   ) {
-    console.log("constructor");
     this.afAuth.authState.subscribe((user) => {
       console.log("constructorrrrrrrrr");
       console.log(JSON.stringify(user));
@@ -33,7 +32,6 @@ export class AuthenticationService {
   }
 
   async signIn(email: string, password: string): Promise<any> {
-    console.log("sign in user", this.user);
     return await this.afAuth.signInWithEmailAndPassword(email, password);
   }
 
@@ -58,7 +56,6 @@ export class AuthenticationService {
   }
 
   get isLoggedIn(): boolean {
-    console.log("pipe2");
     if (this.user !== undefined) {
       return true;
     }

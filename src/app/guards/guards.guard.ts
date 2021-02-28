@@ -26,11 +26,11 @@ export class GuardsGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-      if (this.authService.isLoggedIn) {
-        return true;
-      } else {
-        this.router.navigate(['/']);
-        return false;
-      }
+    if (this.authService) {
+      return true;
+    } else {
+      this.router.navigate(["/"]);
+      return false;
+    }
   }
 }
