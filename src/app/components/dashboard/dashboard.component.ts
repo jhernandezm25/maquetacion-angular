@@ -1,20 +1,19 @@
-import { Component, OnInit,EventEmitter,Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from "@angular/core";
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: "app-dashboard",
+  templateUrl: "./dashboard.component.html",
+  styleUrls: ["./dashboard.component.css"],
 })
 export class DashboardComponent implements OnInit {
-
   userInfo = {
-    email: JSON.parse(localStorage.getItem('userInfo')).email
+    email: JSON.parse(localStorage.getItem("userInfo")).email,
   };
   @Output()
   selectedItem = new EventEmitter();
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
-    this.userInfo.email = JSON.parse(localStorage.getItem('userInfo')).email;
+    this.userInfo.email = JSON.parse(localStorage.getItem("userInfo")).email;
   }
 }

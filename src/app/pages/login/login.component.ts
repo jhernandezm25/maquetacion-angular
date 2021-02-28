@@ -17,7 +17,6 @@ export class LoginComponent implements OnInit {
     password: false,
     userName: false,
   };
-  variableTemporal = {};
   constructor(
     private router: Router,
     private authService: AuthenticationService
@@ -50,6 +49,7 @@ export class LoginComponent implements OnInit {
           this.userInfo.password
         );
         if (isLogin) {
+          console.log("go dashboard")
           localStorage.setItem("userInfo", JSON.stringify(this.userInfo));
           this.router.navigate(["/dashboard"]);
         } else {

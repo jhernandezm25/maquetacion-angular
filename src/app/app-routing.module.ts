@@ -1,29 +1,29 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { IndexComponent } from './pages/index/index.component';
-import { LoginComponent } from './pages/login/login.component';
-import {DashboardComponent} from './components/dashboard/dashboard.component';
-import { GuardsGuard } from './guards/guards.guard';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { IndexComponent } from "./pages/index/index.component";
+import { LoginComponent } from "./pages/login/login.component";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { GuardsGuard } from "./guards/guards.guard";
 
 const routes: Routes = [
   {
-    path: '',
+    path: "",
     component: IndexComponent,
-    pathMatch: 'full'
+    pathMatch: "full",
   },
   {
-    path: 'login',
-    component: LoginComponent
+    path: "login",
+    component: LoginComponent,
   },
   {
-    path: 'dashboard',
+    path: "dashboard",
     component: DashboardComponent,
-    canActivate: [GuardsGuard]
-  }
+    canActivate: [GuardsGuard],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
