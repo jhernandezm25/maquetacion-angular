@@ -1,55 +1,64 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { AuthenticationService } from "src/app/services/authentication.service";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.css"],
 })
-
 export class LoginComponent implements OnInit {
-
   userInfo = {
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   };
   userInfoValidator = {
     email: false,
     password: false,
-    userName: false
+    userName: false,
   };
   variableTemporal = {};
   constructor(
-    private router: Router
-  ) { }
+    private router: Router,
+    private authService: AuthenticationService
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  registrar(){
-    if (this.userInfo.email === ''){
-      console.log('email esta vacio');
+  registrar(): void {
+    if (this.userInfo.email === "") {
+      console.log("email esta vacio");
       this.userInfoValidator.email = true;
-    }else{
+    } else {
       this.userInfoValidator.email = false;
     }
-    if (this.userInfo.password === ''){
+    if (this.userInfo.password === "") {
       console.log(`password esta vacio`);
       this.userInfoValidator.password = true;
-    }else{
+    } else {
       this.userInfoValidator.password = false;
     }
-    if (this.userInfo.password !== '' && this.userInfo.email !== ''){
-      if (this.userInfo.email.trim() === 'jorge.hernandez@dreamcodesoft.com' && this.userInfo.password.trim() === 'Ab123456'){
-        localStorage.setItem('userInfo', JSON.stringify(this.userInfo));
-        this.router.navigate(['/dashboard']);
-      }else{
-        alert('El usuario no se encuentra registrado en el sistema');
+  }
+
+  async login(): Promise<void> {
+    this.registrar();
+    if (this.userInfo.password !== "" && this.userInfo.email !== "") {
+      try {
+        console.log("email", this.userInfo.email.trim());
+        const isLogin: any = await this.authService.signIn(
+          this.userInfo.email.trim(),
+          this.userInfo.password
+        );
+        if (isLogin) {
+          localStorage.setItem("userInfo", JSON.stringify(this.userInfo));
+          this.router.navigate(["/dashboard"]);
+        } else {
+          alert("El usuario no se encuentra registrado en el sistema");
+        }
+      } catch (error) {
+        alert(error.message ? error.message : "Ha ocurrido un error");
+        console.log("error login", error);
       }
     }
-    this.variableTemporal = localStorage.getItem('userInfo');
-    console.log('temp', this.variableTemporal);
-    console.log(' esto es la informacion del usuario ', this.userInfo);
-    console.log('esto es la validación de los datos', this.userInfoValidator);
   }
 }
