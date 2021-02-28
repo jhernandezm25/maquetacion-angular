@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { IndexComponent } from './pages/index/index.component';
 import { LoginComponent } from './pages/login/login.component';
-import {DashboardComponent} from './components/dashboard/dashboard.component'
+import {DashboardComponent} from './components/dashboard/dashboard.component';
+import { GuardsGuard } from './guards/guards.guard';
 
 const routes: Routes = [
   {
@@ -16,7 +17,8 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [GuardsGuard]
   }
 ];
 
