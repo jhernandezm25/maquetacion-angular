@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
       try {
         console.log("email", this.userInfo.email.trim());
         const isLogin: any = await this.authService.signIn(
-          this.userInfo.email.trim(),
+          this.userInfo.email.trim().toLowerCase(),
           this.userInfo.password
         );
         if (isLogin) {
