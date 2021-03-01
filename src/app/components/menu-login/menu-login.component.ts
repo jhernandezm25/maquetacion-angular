@@ -15,14 +15,7 @@ export class MenuLoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  get userIsLogged(): boolean {
-    console.log("esta logueado", this.authService.isLoggedIn);
-    return this.authService.isLoggedIn;
-  }
   logOut(): void {
-    console.log("test salir");
-    console.log(this.authService.isLoggedIn);
-    //this.router.navigate(['/']);
     this.authService.signOut();
   }
 }

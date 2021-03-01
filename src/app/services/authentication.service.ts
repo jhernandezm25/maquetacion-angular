@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from "@angular/core";
+import { Injectable } from "@angular/core";
 import firebase from "firebase";
 import { AngularFireAuth } from "@angular/fire/auth";
 import User = firebase.User;
@@ -10,13 +10,8 @@ import { Router } from "@angular/router";
 export class AuthenticationService {
   public user?: User;
 
-  constructor(
-    private afAuth: AngularFireAuth,
-    private router: Router,
-  ) {
+  constructor(private afAuth: AngularFireAuth, private router: Router) {
     this.afAuth.authState.subscribe((user) => {
-      console.log("constructorrrrrrrrr");
-      console.log(JSON.stringify(user));
       if (user) {
         this.user = user;
         this.setUser(user);
@@ -26,7 +21,7 @@ export class AuthenticationService {
       }
     });
   }
-  
+
   async signUp(email: string, password: string): Promise<any> {
     return this.afAuth.createUserWithEmailAndPassword(email, password);
   }
@@ -36,13 +31,10 @@ export class AuthenticationService {
   }
 
   async signOut(): Promise<any> {
-    console.log("sign out user", this.user);
     if (this.isLoggedIn) {
-      this.setUser(undefined);
       return await this.afAuth
         .signOut()
         .then(() => {
-          console.log("hey entre aquí");
           this.router.navigate(["/"]);
         })
         .catch((error) => console.log("error logout", error));

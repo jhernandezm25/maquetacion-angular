@@ -45,15 +45,9 @@ export class ContacUsComponent implements OnInit {
       this.userInfo.userName !== "" &&
       this.userInfo.email !== "" && this.userInfo.phoneNumber!==""
     ) {
-      //puedo servir para hacer consultas a api's a BD o Consumir servicios
       localStorage.setItem("userInfo", JSON.stringify(this.userInfo));
       this.router.navigate(["/"]);
       alert(`${this.userInfo.userName} tús datos han sido registrados con exito.`);
     }
-    // localStorage.clear()
-    this.variableTemporal = localStorage.getItem("userInfo");
-    console.log("temp", this.variableTemporal);
-    console.log(" esto es la informacion del usuario ", this.userInfo);
-    console.log("esto es la validación de los datos", this.userInfoValidator);
   }
 }

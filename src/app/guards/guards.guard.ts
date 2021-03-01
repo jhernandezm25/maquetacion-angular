@@ -8,7 +8,8 @@ import {
 } from "@angular/router";
 import { Observable } from "rxjs";
 import { AuthenticationService } from "../services/authentication.service";
-
+import firebase from "firebase/app";
+import "firebase/auth";
 @Injectable({
   providedIn: "root",
 })
@@ -26,11 +27,16 @@ export class GuardsGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (this.authService) {
-      return true;
-    } else {
-      this.router.navigate(["/"]);
-      return false;
-    }
+    return new Promise((resolve, reject) => {
+      firebase.auth().onAuthStateChanged((user: firebase.User) => {
+        if (user) {
+          resolve(true);
+        } else {
+          console.log("User is not logged in");
+          this.router.navigate(["/"]);
+          resolve(false);
+        }
+      });
+    });
   }
 }
